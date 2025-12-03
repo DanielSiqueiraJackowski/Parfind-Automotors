@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Peças e Estoque (RF 2) - Parfind Automotors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .form-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        @media (min-width: 1024px) {
+            .h-fit {
+                max-height: calc(100vh - 4rem);
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-yellow-600 text-white shadow-lg">
+        <div class="container py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Gestão de Peças e Estoque (RF 2)</h1>
+            <a href="vendedor.html" class="bg-yellow-700 hover:bg-yellow-800 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                ← Voltar ao Painel
+            </a>
+        </div>
+    </header>
+
+    <main class="container mt-8">
+        
+        <div class="lg:flex lg:space-x-8">
+            <div class="lg:w-1/3 bg-white p-6 rounded-xl form-card mb-8 lg:mb-0 h-fit sticky lg:top-6">
+                <h2 id="form-title" class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">Cadastrar Nova Peça</h2>
+
+                <div class="p-3 mb-4 text-sm rounded-lg font-medium bg-yellow-100 text-yellow-700" role="alert">
+                    ⚠️ Esta é uma tela estática. O objetivo é demonstrar o cadastro e a gestão de estoque/localização (RF 2).
+                </div>
+
+                <form id="peca-form" class="space-y-4">
+                    
+                    <div>
+                        <label for="nome" class="block text-sm font-medium text-gray-700">Nome da Peça <span class="text-red-500">*</span></label>
+                        <input type="text" id="nome" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+
+                    <div>
+                        <label for="descricao" class="block text-sm font-medium text-gray-700">Descrição Detalhada</label>
+                        <textarea id="descricao" rows="3" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="preco_venda" class="block text-sm font-medium text-gray-700">Preço de Venda (R$)</label>
+                            <input type="number" step="0.01" id="preco_venda" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                        </div>
+                        <div>
+                            <label for="preco_compra" class="block text-sm font-medium text-gray-700">Preço de Custo (R$)</label>
+                            <input type="number" step="0.01" id="preco_compra" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="quantidade" class="block text-sm font-medium text-gray-700">Quantidade em Estoque <span class="text-red-500">*</span></label>
+                            <input type="number" id="quantidade" required min="0" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                        </div>
+                        <div>
+                            <label for="localizacao" class="block text-sm font-medium text-gray-700">Localização (Ex: A01) - RF 2</label>
+                            <input type="text" id="localizacao" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit-button" class="w-full py-2 px-4 bg-yellow-500 text-gray-900 font-bold rounded-lg hover:bg-yellow-600 transition duration-200" disabled>
+                        Salvar Peça (Estático)
+                    </button>
+                    
+                    <button type="button" id="clear-button" class="w-full py-2 px-4 bg-gray-200 text-gray-800 font-medium rounded-lg hover:bg-gray-300 transition duration-200" disabled>
+                        Limpar Formulário (Estático)
+                    </button>
+
+                </form>
+            </div>
+            
+            <div class="lg:w-2/3 bg-white p-6 rounded-xl form-card overflow-x-auto">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">Inventário da Loja (Exemplo Estático)</h2>
+                
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Preço Venda</th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Qtd</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">Localização</th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pecas-table-body" class="bg-white divide-y divide-gray-200">
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Pastilha de Freio</td>
+                            <td class="px-6 py-4 text-right">R$ 150,00</td>
+                            <td class="px-6 py-4 text-center">45</td>
+                            <td class="px-6 py-4 hidden sm:table-cell">A03-12</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Em Estoque</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="font-medium text-blue-600 hover:text-blue-800 transition duration-150" disabled>Editar</button>
+                            </td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Amortecedor Traseiro</td>
+                            <td class="px-6 py-4 text-right">R$ 220,00</td>
+                            <td class="px-6 py-4 text-center">8</td>
+                            <td class="px-6 py-4 hidden sm:table-cell">B05-01</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Baixo Estoque</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="font-medium text-blue-600 hover:text-blue-800 transition duration-150" disabled>Editar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

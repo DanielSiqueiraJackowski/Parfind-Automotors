@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parfind Automotors - Acesso ao Sistema</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#ffc107', 
+                        'secondary': '#007bff', 
+                        'background': '#f4f7f9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            background-color: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-card {
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="login-card bg-white p-8 rounded-xl">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-secondary">Parfind Automotors</h1>
+            <p class="text-lg text-gray-500 mt-2">Sistema de Gestão de Peças e Vendas</p>
+        </div>
+
+        <form id="login-form" class="space-y-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Usuário</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    required 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary transition duration-150"
+                    placeholder="vendedor.teste"
+                    value="vendedor.teste"
+                >
+            </div>
+            
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary transition duration-150"
+                    placeholder="123456"
+                    value="123456"
+                >
+            </div>
+
+            <div id="message-box" class="hidden p-3 text-sm rounded-lg" role="alert"></div>
+
+            <button 
+                type="submit" 
+                class="w-full py-3 px-4 bg-primary text-gray-900 font-bold rounded-lg hover:bg-yellow-400 transition duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50"
+            >
+                Entrar
+            </button>
+        </form>
+
+        <p class="text-center text-xs text-gray-400 mt-6">
+            Esta é uma simulação de login (RF 8).
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageBox = document.getElementById('message-box');
+            
+            
+           
+            if (username === 'vendedor.teste' && password === '123456') {
+                
+                messageBox.textContent = 'Login bem-sucedido! Redirecionando...';
+                messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                messageBox.classList.add('bg-green-100', 'text-green-700');
+                
+                setTimeout(() => {
+                    window.location.href = 'vendedor.html';
+                }, 1000); 
+                
+            } else {
+                
+                messageBox.textContent = 'Erro de login: Usuário ou senha inválidos (simulação).';
+                messageBox.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                messageBox.classList.add('bg-red-100', 'text-red-700');
+            }
+        });
+    </script>
+</body>
+</html>

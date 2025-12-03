@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parfind Automotors - Histórico de Vendas (RF 5)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#ffc107', 
+                        'secondary': '#007bff',
+                        'background': '#f4f7f9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            background-color: #f4f7f9;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-7xl mx-auto p-6">
+        <header class="mb-8 p-4 bg-secondary rounded-lg shadow-md flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-white">📋 Histórico de Vendas (RF 5)</h1>
+                <p class="text-blue-200 mt-1">Visualize e detalhe todos os pedidos emitidos.</p>
+            </div>
+            <a href="index.html" class="py-2 px-4 border border-blue-300 rounded-md text-sm font-semibold text-white hover:bg-blue-600 transition duration-200">
+                ← Voltar ao Painel
+            </a>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <div class="lg:col-span-2 card bg-white p-6 rounded-xl overflow-hidden">
+                <h2 class="text-xl font-semibold mb-4 text-secondary border-b pb-2">Vendas Realizadas</h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Venda</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-vendas" class="bg-white divide-y divide-gray-200">
+                            <tr><td colspan="5" class="text-center p-4 text-gray-500">Nenhuma venda encontrada.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="card bg-white p-6 rounded-xl sticky top-6">
+                    <h2 class="text-xl font-semibold mb-4 text-primary border-b pb-2">Detalhes do Pedido <span id="pedido-id" class="text-secondary font-extrabold"></span></h2>
+                    
+                    <div id="detalhes-venda-conteudo">
+                        <p class="text-gray-500 text-center py-8">Selecione um pedido na lista ao lado para ver os detalhes.</p>
+                    </div>
+
+                    <div id="detalhes-venda-template" class="hidden space-y-4">
+                        <h3 class="font-bold text-lg text-secondary">Informações Gerais</h3>
+                        <div class="space-y-1 text-sm">
+                            <p><strong>Cliente:</strong> <span id="detalhe-cliente"></span></p>
+                            <p><strong>CPF/CNPJ:</strong> <span id="detalhe-documento"></span></p>
+                            <p><strong>Data:</strong> <span id="detalhe-data"></span></p>
+                            <p><strong>Pagamento:</strong> <span id="detalhe-pagamento" class="font-medium text-primary"></span></p>
+                        </div>
+                        
+                        <h3 class="font-bold text-lg text-secondary pt-4 border-t">Itens do Pedido</h3>
+                        <div class="space-y-1 text-sm border-b pb-4" id="detalhe-itens">
+                        </div>
+
+                        <div class="space-y-1 text-sm font-medium">
+                            <div class="flex justify-between">
+                                <span>Subtotal:</span>
+                                <span id="detalhe-subtotal"></span>
+                            </div>
+                            <div class="flex justify-between text-red-600">
+                                <span>Desconto:</span>
+                                <span id="detalhe-desconto"></span>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center text-2xl font-bold text-gray-800 pt-3 border-t-2 border-primary">
+                            <span>TOTAL FINAL:</span>
+                            <span id="detalhe-total" class="text-primary"></span>
+                        </div>
+
+                        <button onclick="window.print()" class="w-full mt-4 py-2 px-4 bg-secondary text-white rounded-md hover:bg-blue-700 transition duration-200 text-sm">
+                            Imprimir Nota Fiscal (Simulação)
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="mt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Parfind Automotors | Protótipo Acadêmico</p>
+        </footer>
+    </div>
+
+    <script>
+        
+        function formatarMoeda(valor) {
+            return `R$ ${valor.toFixed(2).replace('.', ',')}`;
+        }
+
+        function getNomeCliente(idCliente) {
+            return 'Cliente Desconhecido';
+        }
+
+        function getDetalhesCliente(idCliente) {
+            return { nome: 'Desconhecido', documento: 'N/A' };
+        }
+
+        function listarVendas() {
+            const listaVendasBody = document.getElementById('lista-vendas');
+            listaVendasBody.innerHTML = '';
+           
+            listaVendasBody.innerHTML = '<tr><td colspan="5" class="text-center p-4 text-gray-500">Nenhuma venda encontrada.</td></tr>';
+        }
+
+        function mostrarDetalhes(idVenda) {
+        }
+
+        document.addEventListener('DOMContentLoaded', listarVendas);
+    </script>
+</body>
+</html>

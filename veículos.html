@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão da Matriz de Compatibilidade (RF 4) - Parfind Automotors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-purple-600 text-white shadow-lg">
+        <div class="container py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Gestão da Matriz de Compatibilidade (RF 4)</h1>
+            <a href="vendedor.html" class="bg-purple-700 hover:bg-purple-800 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                ← Voltar ao Painel
+            </a>
+        </div>
+    </header>
+
+    <main class="container mt-8">
+        
+        <div class="p-3 mb-6 text-sm rounded-lg font-medium bg-yellow-100 text-yellow-700" role="alert">
+            ⚠️ Esta tela demonstra a interface para associar Peças a Veículos, garantindo o RF 1.
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl card mb-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-2">Associar Peça a Veículo(s)</h2>
+            <form class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="peca" class="block text-sm font-medium text-gray-700">Selecione a Peça <span class="text-red-500">*</span></label>
+                        <select id="peca" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500">
+                            <option>Pastilha de Freio Dianteira</option>
+                            <option>Amortecedor Traseiro</option>
+                            <option>Filtro de Óleo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="veiculo" class="block text-sm font-medium text-gray-700">Selecione o Veículo <span class="text-red-500">*</span></label>
+                        <select id="veiculo" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500">
+                            <option>Fiat Palio (2008)</option>
+                            <option>Chevrolet Onix (2020)</option>
+                            <option>Volkswagen Gol (2015)</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-2 px-4 bg-purple-500 text-white font-bold rounded-lg hover:bg-purple-600 transition duration-200" disabled>
+                    Adicionar Compatibilidade (Estático)
+                </button>
+            </form>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl card overflow-x-auto">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-2">Matriz de Compatibilidade Ativa (Exemplo)</h2>
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peça</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Veículo (Marca/Modelo)</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Ano</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ação</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Pastilha de Freio Dianteira</td>
+                        <td class="px-6 py-4">Fiat Palio</td>
+                        <td class="px-6 py-4 text-center">2008</td>
+                        <td class="px-6 py-4 text-right"><button class="text-red-500 hover:text-red-700" disabled>Remover</button></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Pastilha de Freio Dianteira</td>
+                        <td class="px-6 py-4">Chevrolet Corsa</td>
+                        <td class="px-6 py-4 text-center">2012</td>
+                        <td class="px-6 py-4 text-right"><button class="text-red-500 hover:text-red-700" disabled>Remover</button></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Amortecedor Traseiro</td>
+                        <td class="px-6 py-4">Chevrolet Onix</td>
+                        <td class="px-6 py-4 text-center">2020</td>
+                        <td class="px-6 py-4 text-right"><button class="text-red-500 hover:text-red-700" disabled>Remover</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

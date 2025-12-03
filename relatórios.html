@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios Gerenciais (RF 7) - Parfind Automotors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-red-600 text-white shadow-lg">
+        <div class="container py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Geração de Relatórios (RF 7)</h1>
+            <a href="vendedor.html" class="bg-red-700 hover:bg-red-800 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                ← Voltar ao Painel
+            </a>
+        </div>
+    </header>
+
+    <main class="container mt-8">
+        
+        <div class="p-3 mb-6 text-sm rounded-lg font-medium bg-yellow-100 text-yellow-700" role="alert">
+            ⚠️ Tela estática para demonstração da Geração de Relatórios de Vendas e Estoque (RF 7).
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-10">
+            <div class="lg:col-span-1 bg-white p-6 rounded-xl card h-fit">
+                <h2 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Filtros</h2>
+                <form class="space-y-4">
+                    <div>
+                        <label for="periodo" class="block text-sm font-medium text-gray-700">Período</label>
+                        <select id="periodo" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg">
+                            <option selected>Mês Atual</option>
+                            <option>Últimos 30 dias</option>
+                            <option>Este Ano</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="tipo_relatorio" class="block text-sm font-medium text-gray-700">Tipo</label>
+                        <select id="tipo_relatorio" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg">
+                            <option selected>Relatório de Vendas</option>
+                            <option>Relatório de Estoque Crítico</option>
+                            <option>Itens Mais Vendidos</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full py-2 px-4 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition duration-200" disabled>
+                        Gerar Relatório (Estático)
+                    </button>
+                </form>
+            </div>
+            
+            <div class="lg:col-span-3 space-y-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl card border-t-4 border-red-500">
+                        <p class="text-sm text-gray-500">Total de Vendas (Mês)</p>
+                        <p class="text-3xl font-extrabold text-gray-900 mt-1">R$ 15.450,00</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl card border-t-4 border-green-500">
+                        <p class="text-sm text-gray-500">Margem Bruta Estimada</p>
+                        <p class="text-3xl font-extrabold text-gray-900 mt-1">R$ 5.120,00</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl card border-t-4 border-yellow-500">
+                        <p class="text-sm text-gray-500">Peças em Estoque Crítico</p>
+                        <p class="text-3xl font-extrabold text-gray-900 mt-1">12</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl card overflow-x-auto">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Detalhes de Vendas - Mês Atual</h3>
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Venda</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">Cliente</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Valor Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900">#00125</td>
+                                <td class="px-6 py-4">01/12/2025</td>
+                                <td class="px-6 py-4 hidden sm:table-cell">Mecânica Turbo LTDA</td>
+                                <td class="px-6 py-4 text-right font-semibold text-red-600">R$ 1.040,00</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900">#00126</td>
+                                <td class="px-6 py-4">02/12/2025</td>
+                                <td class="px-6 py-4 hidden sm:table-cell">João Silva</td>
+                                <td class="px-6 py-4 text-right font-semibold text-red-600">R$ 25,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl card">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Vendas Diárias</h3>
+                    <div class="h-64 flex items-center justify-center bg-gray-50 border border-dashed rounded-lg text-gray-500">
+                        [Área de Gráfico de Barras Estático Aqui]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

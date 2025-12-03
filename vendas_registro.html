@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro e Consulta de Vendas (RF 5) - Parfind Automotors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .form-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-pink-600 text-white shadow-lg">
+        <div class="container py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Registro e Consulta de Vendas (RF 5)</h1>
+            <a href="vendedor.html" class="bg-pink-700 hover:bg-pink-800 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                ← Voltar ao Painel
+            </a>
+        </div>
+    </header>
+
+    <main class="container mt-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-8">
+                
+                <div class="bg-white p-6 rounded-xl form-card">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-2 text-pink-600">Nova Venda / Edição de Pedido</h2>
+                    
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="cliente_select" class="block text-sm font-medium text-gray-700">Cliente (Comprador) <span class="text-red-500">*</span></label>
+                                <select id="cliente_select" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
+                                    <option>-- Selecione um Cliente --</option>
+                                    <option>João Silva (123.456.789-00)</option>
+                                    <option>Mecânica Turbo LTDA (00.123.456/0001-99)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="data_venda" class="block text-sm font-medium text-gray-700">Data da Venda</label>
+                                <input type="date" id="data_venda" value="2025-12-03" disabled class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100">
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <button type="submit" class="w-1/2 py-2 px-4 bg-pink-500 text-white font-bold rounded-lg hover:bg-pink-600 transition duration-200" disabled>
+                                Iniciar Venda
+                            </button>
+                            <button type="button" class="w-1/2 py-2 px-4 bg-gray-200 text-gray-800 font-medium rounded-lg hover:bg-gray-300 transition duration-200" disabled>
+                                Cancelar Venda
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl form-card">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-2 text-pink-600">Adicionar Itens (Peças)</h2>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="md:col-span-2">
+                                <label for="peca_select" class="block text-sm font-medium text-gray-700">Peça</label>
+                                <select id="peca_select" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
+                                    <option>-- Selecione uma Peça --</option>
+                                    <option>Pastilha de Freio Dianteira (45 em estoque)</option>
+                                    <option>Amortecedor Traseiro (8 em estoque)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="quantidade_item" class="block text-sm font-medium text-gray-700">Quantidade</label>
+                                <input type="number" id="quantidade_item" min="1" value="1" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
+                            </div>
+                        </div>
+                        <button type="button" class="w-full py-2 px-4 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-200" disabled>
+                            Adicionar Item
+                        </button>
+                    </form>
+                    
+                    <h3 class="text-lg font-semibold text-gray-800 mt-8 mb-4">Itens Atuais na Venda</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peça</th>
+                                    <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Qtd</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Preço Un.</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Subtotal</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Pastilha de Freio Dianteira</td>
+                                    <td class="px-6 py-4 text-center">4</td>
+                                    <td class="px-6 py-4 text-right">R$ 150,00</td>
+                                    <td class="px-6 py-4 text-right font-semibold">R$ 600,00</td>
+                                    <td class="px-6 py-4 text-right"><button class="text-red-500 hover:text-red-700" disabled>Remover</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Amortecedor Traseiro</td>
+                                    <td class="px-6 py-4 text-center">2</td>
+                                    <td class="px-6 py-4 text-right">R$ 220,00</td>
+                                    <td class="px-6 py-4 text-right font-semibold">R$ 440,00</td>
+                                    <td class="px-6 py-4 text-right"><button class="text-red-500 hover:text-red-700" disabled>Remover</button></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="border-t-2 border-gray-300 bg-pink-50">
+                                    <td colspan="3" class="px-6 py-3 text-right text-lg font-bold text-gray-800">Total do Pedido:</td>
+                                    <td class="px-6 py-3 text-right text-xl font-extrabold text-pink-700">R$ 1.040,00</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-1">
+                <div class="bg-white p-6 rounded-xl form-card sticky top-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-2 text-pink-600">Finalizar Venda</h2>
+                    
+                    <div class="space-y-3 mb-6 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex justify-between font-medium">
+                            <span>Subtotal:</span>
+                            <span>R$ 1.040,00</span>
+                        </div>
+                        <div class="flex justify-between text-red-600 font-medium">
+                            <span>Desconto:</span>
+                            <span>R$ 0,00</span>
+                        </div>
+                        <div class="flex justify-between text-2xl font-bold border-t pt-2">
+                            <span>Total a Pagar:</span>
+                            <span class="text-pink-700">R$ 1.040,00</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Método de Pagamento</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="metodo_pagamento" class="block text-sm font-medium text-gray-700">Selecione o Método <span class="text-red-500">*</span></label>
+                            <select id="metodo_pagamento" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
+                                <option>Cartão de Crédito</option>
+                                <option>Cartão de Débito</option>
+                                <option>PIX</option>
+                                <option>Dinheiro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="valor_pago" class="block text-sm font-medium text-gray-700">Valor Recebido (R$)</label>
+                            <input type="number" step="0.01" id="valor_pago" value="1040.00" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                        
+                        <div class="flex justify-between text-xl font-bold border-t pt-4">
+                            <span>Troco:</span>
+                            <span class="text-green-600">R$ 0,00</span>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 px-4 bg-yellow-500 text-gray-900 font-bold rounded-lg hover:bg-yellow-600 transition duration-200 mt-6" disabled>
+                            FINALIZAR E CONCLUIR VENDA
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Lojas (RF 6) - Parfind Automotors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-cyan-600 text-white shadow-lg">
+        <div class="container py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Classificação/Avaliação de Lojas (RF 6)</h1>
+            <a href="vendedor.html" class="bg-cyan-700 hover:bg-cyan-800 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                ← Voltar ao Painel
+            </a>
+        </div>
+    </header>
+
+    <main class="container mt-12">
+        
+        <div class="p-3 mb-6 text-sm rounded-lg font-medium bg-yellow-100 text-yellow-700" role="alert">
+            ⚠️ Esta tela simula a interface que um Cliente usaria para avaliar uma Loja Parceira após uma compra (RF 6).
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl card text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Avalie sua Experiência de Compra</h2>
+            <p class="text-gray-600 mb-8">Sua opinião é importante para a comunidade Parfind Automotors.</p>
+            
+            <div class="border p-6 rounded-lg mb-8 bg-cyan-50">
+                <p class="text-xl font-semibold text-gray-700">Loja Parceira:</p>
+                <p class="text-2xl font-extrabold text-cyan-800 mt-1">Auto Peças Central (Venda #00125)</p>
+            </div>
+            
+            <form class="space-y-6">
+                
+                <div>
+                    <label class="block text-xl font-medium text-gray-700 mb-3">Qualidade da Peça e Serviço</label>
+                    <div class="flex justify-center text-4xl space-x-2 cursor-pointer">
+                        <span class="hover:text-yellow-400">⭐</span>
+                        <span class="hover:text-yellow-400">⭐</span>
+                        <span class="hover:text-yellow-400">⭐</span>
+                        <span class="hover:text-yellow-400">⭐</span>
+                        <span class="hover:text-yellow-400">⭐</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="comentario" class="block text-lg font-medium text-gray-700 mb-2">Comentário (Opcional)</label>
+                    <textarea id="comentario" rows="4" placeholder="Deixe um comentário sobre a qualidade da peça e o atendimento recebido..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-cyan-500 focus:border-cyan-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 px-4 bg-cyan-500 text-white font-bold rounded-lg hover:bg-cyan-600 transition duration-200" disabled>
+                    Enviar Avaliação (Estático)
+                </button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
