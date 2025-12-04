@@ -107,6 +107,26 @@
                     window.location.href = 'index.html';
                 }, 1000); 
                 
+            } else if (username === 'cliente.teste' && password === '654321'){
+
+                messageBox.textContent = 'Login bem-sucedido! Redirecionando...';
+                messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                messageBox.classList.add('bg-green-100', 'text-green-700');
+                
+                setTimeout(() => {
+                    window.location.href = 'index2.html';
+                }, 1000); 
+
+            } else if (username === 'admin.teste' && password === '123456'){
+
+                messageBox.textContent = 'Login bem-sucedido! Redirecionando...';
+                messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                messageBox.classList.add('bg-green-100', 'text-green-700');
+                
+                setTimeout(() => {
+                    window.location.href = 'index3.html';
+                }, 1000);     
+
             } else {
                 
                 messageBox.textContent = 'Erro de login: Usuário ou senha inválidos (simulação).';

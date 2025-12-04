@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Principal - Parfind Automotors (RF 1)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .dashboard-link {
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .dashboard-link:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto py-4 px-6 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold flex-shrink-0">Parfind Automotors - Painel Central</h1>
+            
+            <a href="login.html" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                Sair / Login
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-12 px-6">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8 border-b pb-2">Busca de Peças por Compatibilidade</h2>
+        
+        <div class="bg-white p-6 rounded-xl card mb-12 border-l-4 border-blue-500">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                Filtro de Veículo
+            </h3>
+            <p class="text-gray-600 mb-4">Insira o veículo para filtrar apenas as peças compatíveis disponíveis no estoque da loja.</p>
+            <form class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <select class="px-3 py-2 border border-gray-300 rounded-lg">
+                    <option>Marca (Ex: Fiat)</option>
+                </select>
+                <select class="px-3 py-2 border border-gray-300 rounded-lg">
+                    <option>Modelo (Ex: Palio)</option>
+                </select>
+                <select class="px-3 py-2 border border-gray-300 rounded-lg">
+                    <option>Ano (Ex: 2010)</option>
+                </select>
+                <button type="submit" class="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition duration-200" disabled>
+                    Buscar Peças (Estático)
+                </button>
+            </form>
+        </div>
+
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8 border-b pb-2">Acesso Rápido aos Módulos (Gestão do Sistema)</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+            <a href="vendas_registro2.html" class="bg-green-600 text-white p-6 rounded-xl shadow-lg dashboard-link flex flex-col items-center justify-center text-center">
+                <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                <span class="font-bold text-lg">Registro de Vendas (RF 5)</span>
+            </a>
+          
+            <a href="avaliação.html" class="bg-cyan-600 text-white p-6 rounded-xl shadow-lg dashboard-link flex flex-col items-center justify-center text-center">
+                <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.62-.921 1.92 0l2.674 8.216h8.653c.95 0 1.371 1.24.588 1.81l-6.985 5.084 2.674 8.216c.3.921-.755 1.688-1.54 1.11L12 21.36l-6.985 5.084c-.784.57-1.84-.19-1.54-1.11l2.674-8.216L2.348 13.064c-.783-.57-.362-1.81.588-1.81h8.653l2.674-8.216z"></path></svg>
+                <span class="font-bold text-lg">Avaliação de Lojas (RF 6)</span>
+            </a>
+        </div>
+        
+        <hr class="my-12">
+
+        <div class="bg-white p-6 rounded-xl card border-l-4 border-green-500">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Resultados da Busca (Simulação)</h3>
+            <p class="text-gray-600 mb-4">Neste espaço, seriam exibidas as peças compatíveis com o veículo selecionado, prontas para serem adicionadas a uma nova venda.</p>
+            <ul class="list-disc pl-5 text-gray-700">
+                <li>Pastilha de Freio Dianteira (Em estoque: 45) - R$ 120,00</li>
+                <li>Filtro de Óleo Original (Em estoque: 22) - R$ 35,00</li>
+                <li>Amortecedor Traseiro (Em estoque: 10) - R$ 350,00</li>
+            </ul>
+        </div>
+        
+    </main>
+</body>
+</html>
